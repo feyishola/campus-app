@@ -17,7 +17,7 @@ function BuildingList() {
         console.error("Error fetching buildings:", error);
       });
   }, []);
-  if (!buildings) {
+  if (buildings.length < 1) {
     return <div>Loading...</div>;
   }
   return (
@@ -25,6 +25,7 @@ function BuildingList() {
       <div className="p-4 flex justify-center">
         <h1 className="text-3xl">Buildings</h1>
       </div>
+
       <div className="px-3 py-4 flex justify-center">
         <div className="overflow-x-auto w-full">
           <table className="w-full text-md bg-white shadow-md rounded mb-4">
