@@ -17,7 +17,9 @@ function BuildingList() {
         console.error("Error fetching buildings:", error);
       });
   }, []);
-
+  if (!buildings) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="text-gray-900 bg-gray-200 p-5 min-h-screen">
       <div className="p-4 flex justify-center">
