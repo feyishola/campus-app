@@ -6,7 +6,7 @@ import ReactMapGL, {
   Source,
   Layer,
 } from "react-map-gl";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import env from "../config";
 import CardComponent from "./card";
@@ -86,6 +86,49 @@ const LocateBuilding = () => {
 
   return (
     <div>
+      <nav className="flex p-4">
+        <ol className="flex items-center">
+          <li className="text-left">
+            <div className="-m-1">
+              <Link to={"/"}>
+                <p className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
+                  {" "}
+                  Home{" "}
+                </p>
+              </Link>
+            </div>
+          </li>
+
+          <li className="text-left">
+            <div className="flex items-center">
+              <span className="mx-2 text-gray-400">/</span>
+              <div className="-m-1">
+                <Link to={`/building/${id}`}>
+                  <p className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
+                    {" "}
+                    Details{" "}
+                  </p>
+                </Link>
+              </div>
+            </div>
+          </li>
+
+          <li className="text-left">
+            <div className="flex items-center">
+              <span className="mx-2 text-gray-400">/</span>
+              <div className="-m-1">
+                <p
+                  className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
+                  aria-current="page"
+                >
+                  {" "}
+                  Location{" "}
+                </p>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </nav>
       <div className="flex flex-col md:flex-row gap-4 m-5 ">
         <div className="basis-1/4 p-5">
           <CardComponent name={building.buildingName} />

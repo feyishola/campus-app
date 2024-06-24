@@ -168,7 +168,7 @@ function BuildingDetails() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="shrink-0 mr-3 h-5 w-5"
+                  class="shrink-0 mr-3 h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -177,9 +177,10 @@ function BuildingDetails() {
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                    d="M12 2C8.13401 2 5 5.13401 5 9C5 12.866 8.13401 16 12 16C15.866 16 19 12.866 19 9C19 5.13401 15.866 2 12 2ZM12 22C10.1046 22 8.5 20.3954 8.5 18.5C8.5 16.6046 10.1046 15 12 15C13.8954 15 15.5 16.6046 15.5 18.5C15.5 20.3954 13.8954 22 12 22Z"
                   />
                 </svg>
+
                 <Link to={`/locate-building/${building._id}`}>Locate</Link>
               </button>
             </div>
