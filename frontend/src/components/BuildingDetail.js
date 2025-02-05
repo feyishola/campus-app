@@ -207,11 +207,11 @@ function BuildingDetails() {
                     </tr>
                   </thead>
                   <tbody>
-                    {building.spaces.map((room, index) => (
+                    {building.spaces?.map((room, index) => (
                       <tr key={index} className="border">
-                        <td className="px-4 py-2 border">{room.name}</td>
-                        <td className="px-4 py-2 border">{room.type}</td>
-                        <td className="px-4 py-2 border">{room.capacity}</td>
+                        <td className="px-4 py-2 border">{room?.name}</td>
+                        <td className="px-4 py-2 border">{room?.type}</td>
+                        <td className="px-4 py-2 border">{room?.capacity}</td>
                       </tr>
                     ))}
                   </tbody>
