@@ -1,5 +1,10 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../servicedetails.json");
+// const serviceAccount = require("../servicedetails.json");
+
+// Decode the Base64 JSON
+const serviceAccount = JSON.parse(
+  Buffer.from(process.env.FIREBASE_CREDENTIALS, "base64").toString("utf8")
+);
 
 // Initialize Firebase
 admin.initializeApp({
