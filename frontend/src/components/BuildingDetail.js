@@ -24,18 +24,13 @@ function BuildingDetails() {
   }
 
   return (
-    // <div>
-    //   <h1>{building.buildingName}</h1>
-    //   <p>Year Constructed: {building.yearConstructed}</p>
-    //   <img src={building.image} alt={building.buildingName} />
-    // </div>
     <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <nav className="flex">
           <ol className="flex items-center">
             <li className="text-left">
               <div className="-m-1">
-                <Link to={"/"}>
+                <Link to={"/buildinglist"}>
                   <p className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
                     {" "}
                     Home{" "}
@@ -79,21 +74,22 @@ function BuildingDetails() {
               <div className="lg:order-2 lg:ml-5">
                 <div className="max-w-xl overflow-hidden rounded-lg">
                   <img
-                    className="h-full w-full max-w-full object-cover"
-                    src={buildingImg}
-                    alt=""
+                    className="w-[900px] h-[500px] object-cover"
+                    src={building.image ? building.image : buildingImg}
+                    alt={building.buildingName}
+                    width={900}
+                    height={500}
                   />
                 </div>
               </div>
             </div>
           </div>
-
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
             <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
               {building.buildingName}
             </h1>
 
-            <div className="mt-5 flex items-center">
+            {/* <div className="mt-5 flex items-center">
               <div className="flex items-center">
                 <svg
                   className="block h-4 w-4 align-middle text-yellow-500"
@@ -154,12 +150,12 @@ function BuildingDetails() {
               <p className="ml-2 text-sm font-medium text-gray-500">
                 1,209 Reviews
               </p>
-            </div>
+            </div> */}
 
             <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
               <div className="flex items-end">
-                <h1 className="text-3xl font-bold">500</h1>
-                <span className="text-base">/sqm</span>
+                <h1 className="text-3xl font-bold">{building?.size}</h1>
+                {/* <span className="text-base">/sqm</span> */}
               </div>
 
               <button
@@ -196,24 +192,31 @@ function BuildingDetails() {
               </nav>
             </div>
 
-            <div className="mt-8 flow-root sm:mt-12">
-              <h1 className="text-3xl font-bold">Delivered To Your Door</h1>
-              <p className="mt-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-                accusantium nesciunt fuga.
-              </p>
-              <h1 className="mt-8 text-3xl font-bold">
-                From the Fine Farms of Brazil
-              </h1>
-              <p className="mt-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                numquam enim facere.
-              </p>
-              <p className="mt-4">
-                Amet consectetur adipisicing elit. Optio numquam enim facere.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
-                rerum nostrum eius facere, ad neque.
-              </p>
+            <div className="mt-8 sm:mt-12">
+              <p className="mt-4">{building.description}</p>
+
+              <h1 className="mt-8 text-3xl font-bold">Rooms in Building</h1>
+
+              <div className="mt-4 overflow-x-auto">
+                <table className="min-w-full border border-gray-300">
+                  <thead>
+                    <tr className="bg-gray-100 text-left">
+                      <th className="px-4 py-2 border">Room Name</th>
+                      <th className="px-4 py-2 border">Type</th>
+                      <th className="px-4 py-2 border">Capacity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {building.spaces.map((room, index) => (
+                      <tr key={index} className="border">
+                        <td className="px-4 py-2 border">{room.name}</td>
+                        <td className="px-4 py-2 border">{room.type}</td>
+                        <td className="px-4 py-2 border">{room.capacity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

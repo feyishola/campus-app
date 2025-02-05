@@ -1,13 +1,29 @@
 const BuildingModel = require("../model/buildings.model");
 
 class CampusBuilding {
-  async createBuilding(buildingName, yearConstructed, image, lngLat) {
+  async createBuilding(
+    buildingName,
+    yearConstructed,
+    image,
+    lngLat,
+    spaces,
+    description
+  ) {
     try {
       let location;
-      if (Array.isArray(lngLat) && lngLat.length === 2) {
+
+      if (
+        lngLat &&
+        lngLat.type === "Point" &&
+        Array.isArray(lngLat.coordinates) &&
+        lngLat.coordinates.length === 2
+      ) {
+        // Already a valid GeoJSON format, use it directly
+        location = lngLat;
+      } else if (Array.isArray(lngLat) && lngLat.length === 2) {
         location = {
           type: "Point",
-          coordinates: lngLat, // assuming [longitude, latitude]
+          coordinates: lngLat,
         };
       } else if (
         typeof lngLat === "object" &&
@@ -20,7 +36,7 @@ class CampusBuilding {
         };
       } else {
         throw new Error(
-          "Invalid lngLat format. Expected array [lng, lat] or object {lng, lat}"
+          "Invalid lngLat format. Expected GeoJSON { type: 'Point', coordinates: [lng, lat] }, array [lng, lat], or object {lng, lat}"
         );
       }
 
@@ -29,6 +45,8 @@ class CampusBuilding {
         yearConstructed,
         image,
         location,
+        spaces,
+        description,
       });
       const result = await newBuilding.save();
       return result;
