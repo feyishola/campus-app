@@ -25,6 +25,11 @@ function BuildingDetails() {
 
   return (
     <section className="py-12 sm:py-16">
+      <img
+        src="/NDA-192.png"
+        alt="Logo"
+        className="absolute top-4 left-4 w-16 h-16"
+      />
       <div className="container mx-auto px-4">
         <nav className="flex">
           <ol className="flex items-center">

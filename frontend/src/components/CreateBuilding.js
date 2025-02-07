@@ -277,6 +277,7 @@ const CreateBuilding = () => {
   const [description, setDescription] = useState("");
   const [spaces, setSpaces] = useState([]);
   const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const addSpace = () => {
     setSpaces([...spaces, { name: "", type: "Office", capacity: "" }]);
@@ -318,18 +319,26 @@ const CreateBuilding = () => {
     formData.append("spaces", JSON.stringify(spaces));
 
     try {
+      setLoading(true);
       await axios.post(`${env.BASE_URL}/buildings`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
+      setLoading(false);
       setMessage("Building created successfully!");
-      setTimeout(() => navigate("/buildinglist"), 2000);
+      setTimeout(() => navigate("/buildinglist"), 1000);
     } catch (error) {
+      setLoading(false);
       setMessage("Error creating building. Please try again.");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="text-white text-center mt-10 text-xl">Loading...</div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#4B5320] p-6">

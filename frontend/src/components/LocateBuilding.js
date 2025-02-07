@@ -148,6 +148,11 @@ const LocateBuilding = () => {
         </ol>
       </nav>
       <div className="flex flex-col md:flex-row gap-4 m-5 ">
+        <img
+          src="/NDA-192.png"
+          alt="Logo"
+          className="absolute top-4 right-4 w-16 h-16"
+        />
         <div className="basis-1/4 p-5">
           <CardComponent
             name={building.buildingName}

@@ -47,11 +47,18 @@ function BuildingList() {
     }
   };
 
+  // Loader
   if (status === "loading") {
     return (
-      <div className="text-white text-center mt-10 text-xl">Loading...</div>
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <div className="text-white text-center">
+          <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-12 h-12 animate-spin mx-auto"></div>
+          <p className="mt-4 text-xl">Fetching Buildings...</p>
+        </div>
+      </div>
     );
   }
+
   if (status === "failed") {
     return (
       <div className="text-red-500 text-center mt-10 text-xl">

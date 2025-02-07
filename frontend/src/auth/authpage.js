@@ -41,6 +41,11 @@ export default function AuthPage() {
         backgroundPosition: "center",
       }}
     >
+      <img
+        src="/NDA-192.png"
+        alt="Logo"
+        className="absolute top-4 left-4 w-16 h-16"
+      />
       <div className="w-full max-w-md p-6 bg-white bg-opacity-90 rounded-2xl shadow-xl">
         <h2 className="text-2xl font-bold text-center text-gray-800">
           {isSignUp ? "Sign Up" : "Sign In"}

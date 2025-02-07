@@ -1,5 +1,8 @@
 const admin = require("firebase-admin");
-// const serviceAccount = require("../servicedetails.json");
+// const serviceAccount = require("../../servicedetails.json");
+
+// i encoded the json file with dis
+// cat servicedetails.json | base64
 
 // Decode the Base64 JSON
 const serviceAccount = JSON.parse(
