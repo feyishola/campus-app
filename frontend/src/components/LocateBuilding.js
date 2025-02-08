@@ -23,7 +23,7 @@ const LocateBuilding = () => {
   const [viewport, setViewport] = useState({
     longitude: 7.4371, // NDA longitude
     latitude: 10.5616, // NDA latitude
-    zoom: 17, // Closer zoom for better view
+    zoom: 15, // Closer zoom for better view
   });
   const [userLocation, setUserLocation] = useState(null);
   const [route, setRoute] = useState(null);
@@ -103,8 +103,19 @@ const LocateBuilding = () => {
     }
   }, [building, userLocation, travelMode]);
 
+  // if (!building || !userLocation) {
+  //   return <div>Loading...</div>;
+  // }
+
   if (!building || !userLocation) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <div className="text-white text-center">
+          <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-12 h-12 animate-spin mx-auto"></div>
+          <p className="mt-4 text-xl">Locating Building...</p>
+        </div>
+      </div>
+    );
   }
 
   return (

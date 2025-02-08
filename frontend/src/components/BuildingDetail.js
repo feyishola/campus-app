@@ -19,8 +19,19 @@ function BuildingDetails() {
       });
   }, [id]);
 
+  // if (!building) {
+  //   return <div>Loading...</div>;
+  // }
+
   if (!building) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <div className="text-white text-center">
+          <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-12 h-12 animate-spin mx-auto"></div>
+          <p className="mt-4 text-xl">Loading Building Details...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -28,7 +39,7 @@ function BuildingDetails() {
       <img
         src="/NDA-192.png"
         alt="Logo"
-        className="absolute top-4 left-4 w-16 h-16"
+        className="absolute top-4 right-4 w-16 h-16"
       />
       <div className="container mx-auto px-4">
         <nav className="flex">
