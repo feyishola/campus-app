@@ -23,7 +23,7 @@ function BuildingList() {
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // Clear user data
-    navigate("/login"); // Redirect to login page
+    navigate("/"); // Redirect to Landing page
   };
 
   // Get paginated buildings
